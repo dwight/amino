@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svnroot/amino-cbbs/!svn/ver/513/trunk/amino/cpp/include/amino/arch/x86
+END
+x86_util.h
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svnroot/amino-cbbs/!svn/ver/513/trunk/amino/cpp/include/amino/arch/x86/x86_util.h
+END
+cpuid.h
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svnroot/amino-cbbs/!svn/ver/513/trunk/amino/cpp/include/amino/arch/x86/cpuid.h
+END
+gcc_builtins.h
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svnroot/amino-cbbs/!svn/ver/473/trunk/amino/cpp/include/amino/arch/x86/gcc_builtins.h
+END

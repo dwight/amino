@@ -1,0 +1,36 @@
+Read me file for building and testing Amino with C/C++
+
+Prerequisites
+-------------
+Besides the obvious C/C++ compiler, you'll need:
+
+a) GNUmake
+b) perl
+c) linux tools e.g. Cygwin or equivalent (e.g. 'rm', 'vm' etc)
+d) cppunit (http://cppunit.sourceforge.net/cppunit-wiki)
+
+Setup
+-----
+First, you need to set some environment variables identifying the location of the Amino repository
+
+AMINO_ROOT
+   points to the directory containing the source tree. e.g. d:/amino/cpp
+ 
+AMINOBLD_DIR
+   points to the directory containing the build tools i.e. $AMINO_ROOT/bin
+   
+You must run the perl script $AMINOBLD_DIR/makeConfig.pl, and select the platform and compiler
+
+CPPUNIT_ROOT
+    For any tests than use cppunit, you must set CPPUNIT_ROOT to point to the directory containing the lib and include directories for cppunit.
+    
+Building
+--------
+make 
+to build all the components.
+
+Test
+---
+make check 
+to run tests.
+   

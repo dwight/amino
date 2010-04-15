@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svnroot/amino-cbbs/!svn/ver/513/trunk/amino/cpp/include/amino/arch
+END
+compiler.h
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svnroot/amino-cbbs/!svn/ver/513/trunk/amino/cpp/include/amino/arch/compiler.h
+END
+platform_util.h
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svnroot/amino-cbbs/!svn/ver/513/trunk/amino/cpp/include/amino/arch/platform_util.h
+END
