@@ -49,12 +49,15 @@
 #error "This file must be compiled with GNUC compiler"
 #endif
 
-#if __GNUC__ > 4 || (__GNUC__ == 4 && __GNUC_MINOR__ > 0)
+#if defined(_WIN32)
+// TODO fail4
+#elif __GNUC__ > 4 || (__GNUC__ == 4 && __GNUC_MINOR__ > 0)
 #else
 #error "GCC version too low. It must be greater than 4.0"
 #endif
 
 /****************** SC atomic? what about write combining mode?**********************/
+
 #define _ATOMIC_LOAD_( __a__, __x__ ) \
 ({\
    if(__x__ != memory_order_relaxed) \

@@ -29,7 +29,10 @@ namespace std {
 
 #define CPP0X( feature )
 
-#if defined(X86)
+#if defined(_WIN32)
+// fail5
+#define ALIGN_DEF
+#elif defined(X86)
 #define ALIGN_DEF __attribute__((aligned(64)))
 #else
 #define ALIGN_DEF
@@ -1507,6 +1510,22 @@ template<> struct atomic< wchar_t > : atomic_wchar_t
 
 inline bool atomic_is_lock_free( const volatile atomic_bool* __a__ )
 { return true; }
+
+#if defined(_WIN32)
+void visual_studio_compile_test_f(int x, int __x__) { 
+    volatile atomic_bool* a;
+
+    volatile bool __f__;
+
+    if( x != memory_order_relaxed )
+        compiler_barrier();
+
+    // no typeof equiv in visual c++?
+    __typeof__((a)->__f__) __r__ = (a)->__f__;
+
+    __r__;
+}
+#endif
 
 inline bool atomic_load_explicit( volatile atomic_bool* __a__, memory_order __x__ )
 {

@@ -22,8 +22,13 @@ const int CACHE_LINE_SIZE=64;
 
 #define LOCK "lock;"
 
+//fail: todo check this for WIN32
 //optimization barrier
+#if defined(_WIN32)
+#define compiler_barrier() _ReadWriteBarrier()
+#else
 #define compiler_barrier()  __asm__ __volatile__ ("":::"memory")
+#endif
 
 /**
  * According to David Dice's understanding,
@@ -80,6 +85,10 @@ inline int getProcessNum(){
  */
 inline bool cas(volatile void* address, void* oldV_a, unsigned long newV, int size)
 {
+#if defined(_WIN32)
+cout << "FAIL1" << endl;
+return false;
+#else
     //make sure address alignment
     bool ret;
     switch(size){
@@ -143,6 +152,7 @@ inline bool cas(volatile void* address, void* oldV_a, unsigned long newV, int si
 #endif
     } //end switch
     return false;
+#endif
 }
 
 /**
@@ -161,6 +171,10 @@ inline bool cas(volatile void* address, void* oldV_a, unsigned long newV, int si
  * @return true, if a compareAndSet operation succeeds; else return false. 
  */
 inline bool casd(volatile void *ptr, void *old_addr, const void * new_v) {
+#if defined(_WIN32)
+cout << "fail2" << endl;
+return false;
+#else
     unsigned long * old_addr_long = (unsigned long *) old_addr;
     const unsigned long * new_v_long = (const unsigned long *) new_v;
     bool ret;
@@ -212,6 +226,7 @@ inline bool casd(volatile void *ptr, void *old_addr, const void * new_v) {
 #endif //__PIC__
 #endif //BIT64
     return ret;
+#endif
 }
 
 /**
@@ -224,6 +239,9 @@ inline bool casd(volatile void *ptr, void *old_addr, const void * new_v) {
  */
 inline unsigned long xchg(volatile void * ptr, unsigned long v, int size)
 {
+#if defined(_WIN32)
+cout << "fail3" << endl;
+#else
     switch (size) {
         case 1:
             {
@@ -275,5 +293,6 @@ inline unsigned long xchg(volatile void * ptr, unsigned long v, int size)
 #endif
     }
     return v; //the value stored in *ptr before this xchg
+#endif
 }
 #endif
