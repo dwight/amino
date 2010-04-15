@@ -1,4 +1,60 @@
-Amino Concurrent Building Blocks for C++
+Amino Concurrent Building Blocks for C++.
+(There is also some java stuff which is not in this repo.)
 
 Snapshotted / forked from sourceforge 15Apr2009 to make a git home for convenience.
 
+bin/select_platform.sh
+g++ -march=i486  -pthread -I include simptest.cpp && ./a.out
+
+                ===================================
+                
+The primary goal of the Amino open source software project is to develop concurrent libraries 
+or building blocks that can be used by programmers.   These building blocks share the following 
+properties:
+
+1)High-performance and good scalability
+
+2)Portable across various platforms (hardware/OS)
+
+3)Consistent programming idioms (with differences in expression of APIs as necessary) across Java, 
+C/C++ and other popular programming languages.
+
+4)Exploitation of the latest multicore processors and systems
+
+5)Tested for performance and correctness at scale 
+
+There is no restriction about the type of concurrent components one can contribute to the project as 
+long as they are shown to be useful in building real applications.  However, we do plan to focus the 
+project in four specific ways at least at the outset.
+
+1)Initial focus will be on components which run on shared memory systems.
+
+2)There is a bias toward working on components which are very broadly usable.
+  
+3)We plan to focus on Java and C/C++.  
+
+4)At the outset, we expect the platform to be x86/Linux.  
+
+Initial Goals
+-------------
+
+The initial set of building blocks can be grouped into 4 categories
+
+1)Data Structures:  A set of lockfree collection classes.   Since these datastructures were developed 
+using lockfree algorithms, they enjoy some of the basic lockfree properties like, immunity from different 
+types of deadlocks, immunity for priority inversion, etc.   
+
+2)Patterns and Scheduling Algorithms: Most application parallelization efforts follow one or more of 
+a number of well known parallel computation patterns.   We provide a set of patterns that developers can 
+directly leverage to build parallel applications. The patterns we propose to provide will include (but 
+not limited to):  Master-Worker, Map-reduce, Divide and conquer, Pipeline, etc.   We also plan to provide 
+a set of schedulers.   The schedulers can be used in conjunction with the patterns classes.
+
+3)Parallel implementations of general-purpose functions: Example of functions to include, but not limited to:
+   a)String, Sequence and Array functions: Sort, Search, Merge, Rank, Compare, Reverse, Shuffle, Rotate, Median, etc.
+   b)Tree and Graph functions: Connected Components, Spanning Trees, Shortest Path, Graph Coloring, etc.
+   
+4) Atomics, STM, etc.
+   a)Deliver a C++ implementation of atomics.   This implementation will be based on the draft of the C++ 
+   standards definition of the interface for atomics.
+   b)Deliver an open, flexible implementation of Software Transactional Memory.
